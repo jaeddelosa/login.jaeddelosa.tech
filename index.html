@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>Sierra Sam</title>
+    <!-- 
+        Full-frame iframe embed – designed to make the embedded website feel like the main page.
+        No borders, no visible iframe chrome, no outer scrollbars.
+        Works across desktop and mobile.
+    -->
+    <style>
+        /* global reset – kill all margins, paddings, and any spacing that might reveal the iframe container */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* html and body must fill the entire window, with zero overflow to prevent external scrollbars */
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;         /* hides scrollbars on wrapper, content inside iframe handles its own scroll */
+            background: #000000;      /* ultra-black background just in case of loading delay, blends with most sites */
+        }
+
+        /* the iframe itself – perfect full-screen canvas, no visual separation, seamless integration */
+        iframe {
+            display: block;            /* removes inline spacing issues */
+            width: 100%;
+            height: 100%;
+            border: none;             /* removes default iframe border */
+            outline: none;            /* removes focus ring / outline on click */
+            background: #fff;         /* neutral fallback background */
+            position: relative;       /* ensures proper stacking context */
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        /* optional: hide any potential focus ring when iframe receives focus (cross-browser) */
+        iframe:focus {
+            outline: none;
+        }
+
+        /* for older browsers that still may show a border via attribute */
+        iframe[seamless] {
+            border: none;
+        }
+
+        /* ensure that body does not exhibit any overscroll effect that could reveal outer page */
+        body {
+            overscroll-behavior: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        Full-screen, borderless, frameless iframe that loads the page exactly as intended.
+        The attributes are set to maximize compatibility, enable fullscreen, and preserve all interactive features.
+        - 'allowfullscreen' + allow="fullscreen": enables native fullscreen API inside the embedded site.
+        - 'referrerpolicy' keeps referrer intact for proper analytics & resource loading.
+        - 'loading="eager"' ensures immediate loading.
+        - no sandbox restrictions → site behaves exactly as it would in a top-level window.
+    -->
+    <iframe 
+        src="https://sierra-sam.xo.je/" 
+        title="Sierra Sam — full experience"
+        frameborder="0"
+        scrolling="auto"
+        allowfullscreen="true"
+        allow="fullscreen; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        loading="eager"
+        importance="high"
+    ></iframe>
+</body>
+</html>
